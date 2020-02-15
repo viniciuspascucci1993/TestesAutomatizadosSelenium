@@ -59,7 +59,6 @@ public class CampoTreinamentoTest {
 	public void campoTreinamentoTextAreaTest() {
 		dsl.escreve("elementosForm:sugestoes", "Teste Selenium IDE");
 		Assert.assertEquals("Teste Selenium IDE", dsl.getValueFromTextField("elementosForm:sugestoes"));
-		
 	}
 	
 	@Test

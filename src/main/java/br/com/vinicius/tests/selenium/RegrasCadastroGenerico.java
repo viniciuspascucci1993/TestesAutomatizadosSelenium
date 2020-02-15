@@ -59,7 +59,7 @@ public class RegrasCadastroGenerico {
 	public static Collection<Object[]> getCollection() {
 		
 		return Arrays.asList(new Object[][] {
-			
+
 			{"", "", "", Arrays.asList(), new String[]{}, "Nome eh obrigatorio"},
 			{"Vinicius", "", "", Arrays.asList(), new String[]{}, "Sobrenome eh obrigatorio"},
 			{"Vinicius", "Pascucci", "", Arrays.asList(), new String[]{}, "Sexo eh obrigatorio"},

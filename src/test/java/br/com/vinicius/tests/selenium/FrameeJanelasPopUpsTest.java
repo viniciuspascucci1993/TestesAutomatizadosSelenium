@@ -22,6 +22,7 @@ public class FrameeJanelasPopUpsTest {
 	public void initSelenium() {
 		System.setProperty("webdriver.chrome.driver", "C:\\driversSE\\chromedriver.exe");
 		driver = new ChromeDriver();
+		
 		driver.manage().window().setSize(new Dimension(1200, 765));
 		driver.get("file:///" + USER_DIR + "/src/main/resources/componentes.html");
 		dsl = new DSL(driver);
@@ -29,7 +30,7 @@ public class FrameeJanelasPopUpsTest {
 	
 	@After
 	public void afterInitSelenium() {
-//		driver.quit();
+		driver.quit();
 	}
 
 	@Test

@@ -37,7 +37,6 @@ public class AlertTest {
 		dsl.clickButton("alert");
 		
 		String text = dsl.obterTextAlertAndAccept();
-		
 		assertEquals("Alert Simples", text);
 		
 		dsl.escreve("elementosForm:nome", text);

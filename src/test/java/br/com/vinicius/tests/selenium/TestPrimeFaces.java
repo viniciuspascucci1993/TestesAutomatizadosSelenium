@@ -19,6 +19,7 @@ public class TestPrimeFaces {
 	public void initSelenium() {
 		System.setProperty("webdriver.chrome.driver", "C:\\driversSE\\chromedriver.exe");
 		driver = new ChromeDriver();
+		
 		driver.manage().window().setSize(new Dimension(1200, 765));
 		dsl = new DSL(driver);
 	}
@@ -44,7 +45,6 @@ public class TestPrimeFaces {
 	public void primeFacesSelectComboTest() {
 		
 		driver.get("https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml");		
-			
 		dsl.selecionarComboPrimeFaces("j_idt721:console", "Xbox One");;
 			
 		Assert.assertEquals("Xbox One", dsl.getText("j_idt721:console_label"));

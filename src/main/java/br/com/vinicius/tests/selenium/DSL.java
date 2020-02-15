@@ -28,16 +28,15 @@ public class DSL {
 	public void escreveById( By by, String text) {
 		
 		driver.findElement(by).clear();
+		
 		driver.findElement(by).sendKeys(text);
 	}
 
 	public void escreve( String idCampo,  String text) {
-		
 		escreveById(By.id(idCampo), text);
 	}
 	
 	public String getValueFromTextField( String idCampo ) {
-		
 		return driver.findElement(By.id(idCampo)).getAttribute("value");
 	}
 	
@@ -46,27 +45,22 @@ public class DSL {
 	/********* Radio e Check  ( INICIO ) ************/
 	
 	public void clickRadioButtonBy( By by ) {
-		
 		driver.findElement(by).click();
 	}
 	
 	public void clickRadioButton( String idRadio ) {
-		
 		clickRadioButtonBy(By.id(idRadio));
 	}
 	
 	public void clickCheckBox( String id ) {
-		
 		driver.findElement(By.id(id)).click();
 	}
 	
 	public boolean isCheckBoxSelected( String id ) {
-		
 		return driver.findElement(By.id("elementosForm:comidaFavorita:2")).isSelected();
 	}
 	
 	public boolean isRadioButtonSelected( String id ) {
-		
 		return driver.findElement(By.id(id)).isSelected();
 	}
 	

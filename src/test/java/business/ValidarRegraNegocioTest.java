@@ -24,7 +24,6 @@ public class ValidarRegraNegocioTest {
 		driver.findElement(By.id("elementosForm:cadastrar")).click();
 		
 		Alert alert = driver.switchTo().alert();
-		
 		Assert.assertEquals("Nome eh obrigatorio", alert.getText());
 		driver.quit();
 		
@@ -42,7 +41,6 @@ public class ValidarRegraNegocioTest {
 		driver.findElement(By.id("elementosForm:cadastrar")).click();
 		
 		Alert alert = driver.switchTo().alert();
-		
 		Assert.assertEquals("Sobrenome eh obrigatorio", alert.getText());
 		driver.quit();
 		

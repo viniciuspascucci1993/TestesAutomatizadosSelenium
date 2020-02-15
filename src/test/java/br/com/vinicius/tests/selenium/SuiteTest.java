@@ -10,4 +10,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	RegrasCadastroGenerico.class,
 	CampoTreinamentoTest.class
 })
+/**
+ * Suite de tests para assumir a ordem dos testes.
+ * @author Vinicius-PC.
+ */
 public class SuiteTest {  }

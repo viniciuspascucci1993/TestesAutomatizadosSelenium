@@ -20,6 +20,7 @@ public class DesafioCadastroSucessoTest {
 	public void initSelenium() {
 		System.setProperty("webdriver.chrome.driver", "C:\\driversSE\\chromedriver.exe");
 		driver = new ChromeDriver();
+		
 		driver.manage().window().setSize(new Dimension(1200, 765));
 		driver.get("file:///" + USER_DIR + "/src/main/resources/componentes.html");
 		page = new CampoTreinamentoPage(driver);

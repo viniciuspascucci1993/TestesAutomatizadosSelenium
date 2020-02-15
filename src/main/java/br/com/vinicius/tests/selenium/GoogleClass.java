@@ -33,7 +33,6 @@ public class GoogleClass {
 	public void testeBrowserAutomate() {
 		
 		driver.get("https://www.google.com");
-						
 		Assert.assertEquals("Google", driver.getTitle());
 		
 		// fechar o browser ( todas as abas ).

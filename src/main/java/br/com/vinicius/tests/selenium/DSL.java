@@ -89,7 +89,7 @@ public class DSL {
 		return combo.getFirstSelectedOption().getText();
 	}
 	
-	public List<String> obterValoresCombo(String id) {
+	public List<String> getValuesCombobox(String id) {
 		WebElement element = driver.findElement(By.id("elementosForm:esportes"));
 		Select combo = new Select(element);
 		List<WebElement> allSelectedOptions = combo.getAllSelectedOptions();
@@ -100,14 +100,14 @@ public class DSL {
 		return valores;
 	}
 	
-	public int obterQuantidadeOpcoesCombo(String id){
+	public int getQuantidadesCombo(String id){
 		WebElement element = driver.findElement(By.id(id));
 		Select combo = new Select(element);
 		List<WebElement> options = combo.getOptions();
 		return options.size();
 	}
 	
-	public boolean verificarOpcaoCombo(String id, String opcao){
+	public boolean checkCombo(String id, String opcao){
 		WebElement element = driver.findElement(By.id(id));
 		Select combo = new Select(element);
 		List<WebElement> options = combo.getOptions();

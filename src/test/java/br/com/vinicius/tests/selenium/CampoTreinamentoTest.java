@@ -114,11 +114,11 @@ public class CampoTreinamentoTest {
 		dsl.selectCombobox("elementosForm:esportes", "Karate");
 		dsl.selectCombobox("elementosForm:esportes", "O que eh esporte?");
 		
-		List<String> opcoesMarcadas = dsl.obterValoresCombo("elementosForm:esportes");		
+		List<String> opcoesMarcadas = dsl.getValuesCombobox("elementosForm:esportes");		
 		Assert.assertEquals(3, opcoesMarcadas.size());
 		
 		dsl.deselecionarCombo("elementosForm:esportes", "Karate");
-		opcoesMarcadas = dsl.obterValoresCombo("elementosForm:esportes");
+		opcoesMarcadas = dsl.getValuesCombobox("elementosForm:esportes");
 		Assert.assertEquals(2, opcoesMarcadas.size());
 		
 		Assert.assertTrue(opcoesMarcadas.containsAll(Arrays.asList("Natacao", "O que eh esporte?")));

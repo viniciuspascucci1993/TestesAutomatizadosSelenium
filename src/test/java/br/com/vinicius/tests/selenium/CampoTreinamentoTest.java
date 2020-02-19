@@ -145,8 +145,8 @@ public class CampoTreinamentoTest {
 		
 //		Assert.assertTrue(driver.findElement(By.tagName("body"))
 //				.getText().contains("Campo de Treinamento"));
-		Assert.assertEquals("Campo de Treinamento", dsl.getTextLinkById(By.tagName("h3")));
-		Assert.assertEquals("Cuidado onde clica, muitas armadilhas...", dsl.getTextLinkById(By.className("facilAchar")));
+		Assert.assertEquals("Campo de Treinamento", dsl.getXPath(By.tagName("h3")));
+		Assert.assertEquals("Cuidado onde clica, muitas armadilhas...", dsl.getXPath(By.className("facilAchar")));
 	
 	}
 	

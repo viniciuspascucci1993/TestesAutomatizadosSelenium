@@ -151,14 +151,14 @@ public class DSL {
 	
 	/********* Textos ( INICIO ) ************/
 	
-	public String getTextLinkById( By by ) {
+	public String getXPath( By by ) {
 		
 		return driver.findElement(by).getText();
 	}
 	
 	public String getText( String id ) {
 		
-		return getTextLinkById(By.id(id));
+		return getXPath(By.id(id));
 	}
 	
 	/********* Textos ( FIM ) ************/

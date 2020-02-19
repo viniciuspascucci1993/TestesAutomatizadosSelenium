@@ -31,7 +31,7 @@ public class SincronismoTest {
 	
 	@After
 	public void afterInitSelenium() {
-//		driver.quit();
+		driver.quit();
 	}
 	
 	@Test

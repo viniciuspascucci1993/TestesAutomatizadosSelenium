@@ -37,7 +37,6 @@ public class AjaxTest {
 		dsl.escreve("j_idt720:name", "It Works dude?");
 		dsl.clickButton("j_idt720:j_idt723");
 		WebDriverWait wait = new WebDriverWait(driver, 30);
-//		wait.until(ExpectedConditions.textToBe(By.id("j_idt720:display"), "It Works dude?"));
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("j_idt792_start")));
 		Assert.assertEquals("It Works dude?", dsl.getText("j_idt720:display"));
 	}

@@ -1,4 +1,7 @@
-package br.com.vinicius.tests.selenium;
+package br.com.vinicius.tests.selenium.test;
+
+import static br.com.vinicius.tests.selenium.core.DriverFactory.getDriver;
+import static br.com.vinicius.tests.selenium.core.DriverFactory.killDriver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -6,32 +9,24 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import br.com.vinicius.tests.selenium.core.DSL;
+
 public class SincronismoTest {
-
-	private static final String USER_DIR = System.getProperty("user.dir");
-
-	private WebDriver driver;
 	
 	private DSL dsl;
 	
 	@Before
 	public void initSelenium() {
-		System.setProperty("webdriver.chrome.driver", "C:\\driversSE\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().window().setSize(new Dimension(1200, 765));
-		driver.get("file:///" + USER_DIR + "/src/main/resources/componentes.html");
-		dsl = new DSL(driver);
+		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new DSL();
 	}
 	
 	@After
 	public void afterInitSelenium() {
-		driver.quit();
+		killDriver();
 	}
 	
 	@Test
@@ -45,17 +40,17 @@ public class SincronismoTest {
 	@Test
 	public void deveUtilizarEsperaImplicita() throws InterruptedException {
 		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		dsl.clickButton("buttonDelay");
 		dsl.escreve("novoCampo", "It Works?");
-		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 	}
 	
 	@Test
 	public void deveUtilizarEsperaExplicita() throws InterruptedException {
 		
 		dsl.clickButton("buttonDelay");
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(getDriver(), 30);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("novoCampo")));
 		dsl.escreve("novoCampo", "It Works?");
 	}

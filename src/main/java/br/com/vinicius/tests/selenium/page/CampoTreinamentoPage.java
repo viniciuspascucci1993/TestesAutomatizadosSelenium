@@ -1,15 +1,10 @@
-package br.com.vinicius.tests.selenium;
+package br.com.vinicius.tests.selenium.page;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class CampoTreinamentoPage {
-	
-	private DSL dsl;
+import br.com.vinicius.tests.selenium.core.BasePage;
 
-	public CampoTreinamentoPage( WebDriver driver ) {
-		dsl = new DSL(driver);
-	}
+public class CampoTreinamentoPage extends BasePage {
 	
 	public void setNome( String nome ) {
 		dsl.escreve("elementosForm:nome", nome);

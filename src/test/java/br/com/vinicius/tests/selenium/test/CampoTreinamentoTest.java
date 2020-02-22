@@ -1,4 +1,6 @@
-package br.com.vinicius.tests.selenium;
+package br.com.vinicius.tests.selenium.test;
+
+import static br.com.vinicius.tests.selenium.core.DriverFactory.getDriver;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,34 +10,26 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class CampoTreinamentoTest {
-	
-	private static final String USER_DIR = System.getProperty("user.dir");
+import br.com.vinicius.tests.selenium.core.DSL;
+import br.com.vinicius.tests.selenium.core.DriverFactory;
 
-	private WebDriver driver;
+public class CampoTreinamentoTest {
 	
 	private DSL dsl;
 	
 	@Before
 	public void initSelenium() {
-		System.setProperty("webdriver.chrome.driver", "C:\\driversSE\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().window().setSize(new Dimension(1200, 765));
-		driver.get("file:///" + USER_DIR + "/src/main/resources/componentes.html");
-		dsl = new DSL(driver);
+		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new DSL();
 	}
 	
 	@After
-	public void afterInitSelenium() {
-		driver.quit();
+	public void finaliza(){
+		DriverFactory.killDriver();
 	}
-	
 	
 	@Test
 	public void campoTreinamentoTextFieldTest() {
@@ -88,7 +82,7 @@ public class CampoTreinamentoTest {
 	@Test
 	public void campoTreinamentoGetValuesComboBoxTest() {
 		
-		WebElement element = driver.findElement(By.id("elementosForm:escolaridade"));
+		WebElement element = getDriver().findElement(By.id("elementosForm:escolaridade"));
 		Select combo = new Select(element);
 		
 		List<WebElement> options = combo.getOptions();
@@ -143,8 +137,6 @@ public class CampoTreinamentoTest {
 	@Test
 	public void campoTreinamentoBuscaTextoPaginaTest() {
 		
-//		Assert.assertTrue(driver.findElement(By.tagName("body"))
-//				.getText().contains("Campo de Treinamento"));
 		Assert.assertEquals("Campo de Treinamento", dsl.getXPath(By.tagName("h3")));
 		Assert.assertEquals("Cuidado onde clica, muitas armadilhas...", dsl.getXPath(By.className("facilAchar")));
 	
@@ -153,7 +145,7 @@ public class CampoTreinamentoTest {
 	@Test
 	public void javaScriptTest() {
 		
-		WebElement elemnent = driver.findElement(By.id("elementosForm:nome"));
+		WebElement elemnent = getDriver().findElement(By.id("elementosForm:nome"));
 		dsl.escreveById(By.id("elementosForm:nome"), "Manipulando JS com Selenium");
 		dsl.executarJavaScript("arguments[0].style.border = arguments[1]", elemnent, "solid 4px red");
 	}

@@ -1,36 +1,30 @@
-package br.com.vinicius.tests.selenium;
+package br.com.vinicius.tests.selenium.test;
+
+import static br.com.vinicius.tests.selenium.core.DriverFactory.getDriver;
+import static br.com.vinicius.tests.selenium.core.DriverFactory.killDriver;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class FrameeJanelasPopUpsTest {
-	
-	private static final String USER_DIR = System.getProperty("user.dir");
-	
-	private WebDriver driver;
+import br.com.vinicius.tests.selenium.core.DSL;
+
+public class FrameeJanelasPopUpsTest {	
 	
 	private DSL dsl;
 	
 	@Before
 	public void initSelenium() {
-		System.setProperty("webdriver.chrome.driver", "C:\\driversSE\\chromedriver.exe");
-		driver = new ChromeDriver();
-		
-		driver.manage().window().setSize(new Dimension(1200, 765));
-		driver.get("file:///" + USER_DIR + "/src/main/resources/componentes.html");
-		dsl = new DSL(driver);
+		getDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new DSL();
 	}
 	
 	@After
 	public void afterInitSelenium() {
-		driver.quit();
+		killDriver();
 	}
 
 	@Test
@@ -52,7 +46,7 @@ public class FrameeJanelasPopUpsTest {
 		dsl.clickButton("buttonPopUpEasy");
 		dsl.trocarJanela("Popup");
 		dsl.escreveById(By.tagName("textarea"), "Selenium é melhor que Octane KKK");
-		driver.close();
+		getDriver().close();
 		dsl.trocarJanela("");
 		dsl.escreveById(By.tagName("textarea"), "Ainda é melhor que Octane u.u");
 	}
@@ -60,7 +54,7 @@ public class FrameeJanelasPopUpsTest {
 	@Test
 	public void deveInteragirComFrameEscondidoTest() {
 		
-		WebElement frame = driver.findElement(By.id("frame2"));
+		WebElement frame = getDriver().findElement(By.id("frame2"));
 		dsl.executarJavaScript("window.scrollBy(0, arguments[0])", frame.getLocation().y);
 		dsl.entrarFrame("frame2");
 		dsl.clickButton("frameButton");
@@ -72,13 +66,13 @@ public class FrameeJanelasPopUpsTest {
 	public void deveInteragirComJanelasPopUpsSemTituloTest() {
 		
 		dsl.clickButton("buttonPopUpHard");
-		System.out.println(driver.getWindowHandle());
-		System.out.println(driver.getWindowHandles());
+		System.out.println(getDriver().getWindowHandle());
+		System.out.println(getDriver().getWindowHandles());
 		
-		dsl.trocarJanela((String) driver.getWindowHandles().toArray()[1]);
+		dsl.trocarJanela((String) getDriver().getWindowHandles().toArray()[1]);
 		dsl.escreveById(By.tagName("textarea"), "That's OK");
 		
-		dsl.trocarJanela((String) driver.getWindowHandles().toArray()[0]);
+		dsl.trocarJanela((String) getDriver().getWindowHandles().toArray()[0]);
 		dsl.escreveById(By.tagName("textarea"), "That's OK Dude");
 		
 	}
